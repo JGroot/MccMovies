@@ -6,22 +6,22 @@ using MvcMovie.Models;
 
 namespace MvcMovie.Controllers
 {
-    public class MoviesController : Controller
+    public class PositionsController : Controller
     {
         private ApplicationDbContext _context;
 
-        public MoviesController(ApplicationDbContext context)
+        public PositionsController(ApplicationDbContext context)
         {
             _context = context;    
         }
 
-        // GET: Movies
+        // GET: Positions
         public IActionResult Index()
         {
-            return View(_context.Movie.ToList());
+            return View(_context.Positions.ToList());
         }
 
-        // GET: Movies/Details/5
+        // GET: Positions/Details/5
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -29,36 +29,36 @@ namespace MvcMovie.Controllers
                 return HttpNotFound();
             }
 
-            Movie movie = _context.Movie.Single(m => m.ID == id);
-            if (movie == null)
+            Positions positions = _context.Positions.Single(m => m.ID == id);
+            if (positions == null)
             {
                 return HttpNotFound();
             }
 
-            return View(movie);
+            return View(positions);
         }
 
-        // GET: Movies/Create
+        // GET: Positions/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Movies/Create
+        // POST: Positions/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Movie movie)
+        public IActionResult Create(Positions positions)
         {
             if (ModelState.IsValid)
             {
-                _context.Movie.Add(movie);
+                _context.Positions.Add(positions);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(movie);
+            return View(positions);
         }
 
-        // GET: Movies/Edit/5
+        // GET: Positions/Edit/5
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -66,30 +66,29 @@ namespace MvcMovie.Controllers
                 return HttpNotFound();
             }
 
-            Movie movie = _context.Movie.Single(m => m.ID == id);
-            if (movie == null)
+            Positions positions = _context.Positions.Single(m => m.ID == id);
+            if (positions == null)
             {
                 return HttpNotFound();
             }
-            return View(movie);
+            return View(positions);
         }
 
-        // POST: Movies/Edit/5
+        // POST: Positions/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(
-            [Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public IActionResult Edit(Positions positions)
         {
             if (ModelState.IsValid)
             {
-                _context.Update(movie);
+                _context.Update(positions);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(movie);
+            return View(positions);
         }
 
-        // GET: Movies/Delete/5
+        // GET: Positions/Delete/5
         [ActionName("Delete")]
         public IActionResult Delete(int? id)
         {
@@ -98,22 +97,22 @@ namespace MvcMovie.Controllers
                 return HttpNotFound();
             }
 
-            Movie movie = _context.Movie.Single(m => m.ID == id);
-            if (movie == null)
+            Positions positions = _context.Positions.Single(m => m.ID == id);
+            if (positions == null)
             {
                 return HttpNotFound();
             }
 
-            return View(movie);
+            return View(positions);
         }
 
-        // POST: Movies/Delete/5
+        // POST: Positions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            Movie movie = _context.Movie.Single(m => m.ID == id);
-            _context.Movie.Remove(movie);
+            Positions positions = _context.Positions.Single(m => m.ID == id);
+            _context.Positions.Remove(positions);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

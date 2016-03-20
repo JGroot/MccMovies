@@ -1,10 +1,10 @@
-@model IEnumerable<MvcMovie.Models.Employees>
+@model IEnumerable<MvcMovie.Models.Positions>
 
 @{
-    ViewData["Title"] = "Employees";
+    ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<h2>Positions</h2>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -12,13 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.DateAdded)
+            @Html.DisplayNameFor(model => model.PositionName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.isActive)
@@ -29,13 +26,10 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.DateAdded)
+           @Html.DisplayFor(modelItem => item.PositionName)           
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.DisplayFor(modelItem => item.Description)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.isActive)

@@ -19,6 +19,7 @@ namespace MvcMovie.Models
         }
         public DbSet<Movie> Movie { get; set; }
         public DbSet<Employees> Employees { get; set; }
+        public DbSet<Positions> Positions { get; set; }
  
     }
 }
